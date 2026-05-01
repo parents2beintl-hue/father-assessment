@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How Are You Doing? - Parents2Be International</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0KTPZJX8Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,502 +13,193 @@
   gtag('config', 'G-E0KTPZJX8Z');
 </script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html, body {
-    background: #FFFFFF;
-    color: #111111;
-    font-family: 'DM Sans', system-ui, sans-serif;
-    min-height: 100vh;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* FORCE LIGHT MODE - no inheritance */
-  :root {
-    color-scheme: light only;
-  }
-
-  .page {
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 0 1.4rem 5rem;
-    background: #FFFFFF;
-  }
-
-  /* TOP BAR */
-  .topbar {
-    background: #111111;
-    padding: 1rem 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .topbar-brand {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 15px;
-    color: #C9A84C;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-  }
-  .topbar-tag {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #888888;
-  }
-
-  /* PROGRESS */
-  .progress-wrap {
-    padding: 1rem 0 0;
-    margin-bottom: 0.5rem;
-  }
-  .progress-track {
-    height: 2px;
-    background: #EEEEEE;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: #C9A84C;
-    transition: width 0.5s ease;
-  }
-  .progress-text {
-    font-size: 11px;
-    color: #888888;
-    margin-top: 5px;
-    letter-spacing: 0.03em;
-  }
-
-  /* SCREENS */
-  .screen { display: none; }
-  .screen.active { display: block; }
-
-  /* SECTION SPACING */
-  .section {
-    padding-top: 2rem;
-  }
-
-  /* TYPOGRAPHY */
-  .label-tag {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #8B6914;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  h1 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 28px;
-    line-height: 1.2;
-    color: #111111;
-    margin-bottom: 0.8rem;
-  }
-
-  h2 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 22px;
-    line-height: 1.25;
-    color: #111111;
-    margin-bottom: 0.7rem;
-  }
-
-  .lead {
-    font-size: 16px;
-    color: #444444;
-    line-height: 1.65;
-    margin-bottom: 1.2rem;
-  }
-
-  .body-text {
-    font-size: 14px;
-    color: #555555;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .quiet {
-    font-size: 12px;
-    color: #888888;
-    line-height: 1.6;
-  }
-
-  /* PROMISE BLOCK */
-  .promise {
-    border-left: 3px solid #C9A84C;
-    padding: 0.9rem 1rem;
-    margin: 1.2rem 0;
-    background: #FDFBF6;
-  }
-  .promise p {
-    font-size: 13px;
-    color: #444444;
-    line-height: 1.6;
-    margin-bottom: 0.4rem;
-  }
-  .promise p:last-child { margin-bottom: 0; }
-
-  /* CONTEXT FORM */
-  .field-group { margin-bottom: 1rem; }
-  .field-label {
-    font-size: 13px;
-    color: #444444;
-    margin-bottom: 5px;
-    display: block;
-    font-weight: 500;
-  }
-  .field-label .optional {
-    font-weight: 300;
-    color: #888888;
-    font-size: 12px;
-  }
-  .field-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #DDDDDD;
-    font-family: 'DM Sans', system-ui, sans-serif;
-    font-size: 14px;
-    background: #FAFAFA;
-    color: #111111;
-    border-radius: 0;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  .field-input:focus {
-    outline: none;
-    border-color: #C9A84C;
-    background: #FFFFFF;
-  }
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  /* QUESTION CARD */
-  .q-card {
-    padding-top: 1.8rem;
-    margin-bottom: 0.5rem;
-  }
-  .q-num {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #AAAAAA;
-    margin-bottom: 6px;
-  }
-  .q-text {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 19px;
-    line-height: 1.4;
-    color: #111111;
-    margin-bottom: 1rem;
-  }
-  .q-sub {
-    font-size: 13px;
-    color: #777777;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  /* ANSWER OPTIONS */
-  .answers {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 1.5rem;
-  }
-  .answer {
-    padding: 12px 16px;
-    border: 1px solid #DDDDDD;
-    background: #FAFAFA;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333333;
-    line-height: 1.45;
-    transition: all 0.15s;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .answer:hover {
-    border-color: #C9A84C;
-    background: #FDFBF6;
-  }
-  .answer.picked {
-    border-color: #111111;
-    background: #111111;
-    color: #FFFFFF;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: #EEEEEE;
-    margin: 1.4rem 0;
-  }
-
-  /* BUTTONS */
-  .btn-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 1.4rem;
-    flex-wrap: wrap;
-  }
-  .btn {
-    padding: 12px 26px;
-    font-size: 14px;
-    font-family: 'DM Sans', system-ui, sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    border: 1.5px solid #111111;
-    background: #FFFFFF;
-    color: #111111;
-    letter-spacing: 0.03em;
-    transition: all 0.15s;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .btn:hover { background: #F5F5F5; }
-  .btn-dark {
-    background: #111111;
-    color: #FFFFFF;
-    border-color: #111111;
-  }
-  .btn-dark:hover {
-    background: #C9A84C;
-    border-color: #C9A84C;
-    color: #111111;
-  }
-  .btn-gold {
-    background: #C9A84C;
-    border-color: #C9A84C;
-    color: #111111;
-  }
-  .btn-gold:hover {
-    background: #8B6914;
-    border-color: #8B6914;
-    color: #FFFFFF;
-  }
-  .btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-  .btn-back {
-    font-size: 13px;
-    color: #888888;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px 0;
-    font-family: 'DM Sans', system-ui, sans-serif;
-  }
-  .btn-back:hover { color: #111111; }
-
-  /* NOTICE */
-  .notice {
-    font-size: 12px;
-    color: #777777;
-    line-height: 1.6;
-    padding: 10px 12px;
-    border: 1px solid #EEEEEE;
-    background: #FAFAFA;
-    margin-bottom: 1.2rem;
-  }
-
-  /* SCORE REVEAL */
-  .score-reveal {
-    text-align: center;
-    padding: 2rem 1rem;
-    border: 2px solid #111111;
-    margin-bottom: 1.4rem;
-    background: #FDFBF6;
-  }
-  .score-reveal-num {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 64px;
-    line-height: 1;
-    color: #111111;
-  }
-  .score-reveal-label {
-    font-size: 13px;
-    color: #777777;
-    margin-top: 4px;
-  }
-
-  /* RESULT BAND */
-  .result-card {
-    padding: 1.2rem 1.4rem;
-    margin-bottom: 1.2rem;
-    border-left: 4px solid #C9A84C;
-    background: #FDFBF6;
-  }
-  .result-card.green { border-left-color: #2E7D32; background: #F7FBF7; }
-  .result-card.amber { border-left-color: #C9A84C; background: #FDFBF6; }
-  .result-card.red { border-left-color: #C62828; background: #FFF5F5; }
-  .result-card h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 18px;
-    color: #111111;
-    margin-bottom: 6px;
-  }
-  .result-card p {
-    font-size: 14px;
-    color: #444444;
-    line-height: 1.65;
-  }
-
-  /* NEXT STEP CARD */
-  .next-card {
-    border: 1px solid #DDDDDD;
-    padding: 1.2rem 1.4rem;
-    margin-bottom: 0.9rem;
-    background: #FFFFFF;
-  }
-  .next-card h4 {
-    font-size: 14px;
-    font-weight: 500;
-    color: #111111;
-    margin-bottom: 5px;
-  }
-  .next-card p {
-    font-size: 13px;
-    color: #666666;
-    line-height: 1.55;
-  }
-
-  /* EMAIL CAPTURE */
-  .email-block {
-    background: #111111;
-    padding: 1.4rem;
-    margin: 1.4rem 0;
-  }
-  .email-block h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 18px;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-  }
-  .email-block p {
-    font-size: 13px;
-    color: #AAAAAA;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  .email-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .email-input {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px 12px;
-    border: 1px solid #444444;
-    background: #222222;
-    color: #FFFFFF;
-    font-family: 'DM Sans', system-ui, sans-serif;
-    font-size: 14px;
-    border-radius: 0;
-  }
-  .email-input::placeholder { color: #666666; }
-  .email-input:focus { outline: none; border-color: #C9A84C; }
-  .email-skip {
-    font-size: 12px;
-    color: #666666;
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 0.7rem;
-    display: inline-block;
-    background: none;
-    border: none;
-    font-family: 'DM Sans', system-ui, sans-serif;
-  }
-  .email-skip:hover { color: #AAAAAA; }
-
-  /* SOFT SUPPORT FLAG */
-  .soft-flag {
-    background: #FFF5F5;
-    border: 1px solid #FFCDD2;
-    padding: 1rem 1.2rem;
-    margin: 1rem 0;
-    display: none;
-  }
-  .soft-flag p {
-    font-size: 13px;
-    color: #444444;
-    line-height: 1.6;
-  }
-  .soft-flag a {
-    color: #C62828;
-    font-weight: 500;
-    text-decoration: none;
-  }
-
-  /* FOOTER */
-  .page-footer {
-    margin-top: 3rem;
-    padding-top: 1.4rem;
-    border-top: 1px solid #EEEEEE;
-    font-size: 11px;
-    color: #AAAAAA;
-    line-height: 1.7;
-  }
-  .page-footer a { color: #AAAAAA; text-decoration: underline; }
-
-  @media (max-width: 480px) {
-    h1 { font-size: 24px; }
-    h2 { font-size: 19px; }
-    .q-text { font-size: 17px; }
-    .field-row { grid-template-columns: 1fr; }
-    .score-reveal-num { font-size: 52px; }
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #C9A84C; --gold-dark: #8B6914;
+  --bg: #FFFFFF; --bg2: #F8F6F1; --bg3: #F0EDE6;
+  --text: #111111; --text2: #444444; --text3: #666666; --text4: #888888;
+  --border: #DDDDDD; --border2: #CCCCCC;
+  --topbar-bg: #111111; --topbar-sub: #888888;
+  --promise-bg: #FDFBF6;
+  --answer-bg: #FAFAFA; --answer-hover: #FDFBF6;
+  --answer-picked-bg: #111111; --answer-picked-text: #FFFFFF;
+  --rg-bg: #F7FBF7; --rg-bd: #2E7D32;
+  --ra-bg: #FDFBF6; --ra-bd: #C9A84C;
+  --rr-bg: #FFF5F5; --rr-bd: #C62828;
+  --email-bg: #111111; --email-text: #FFFFFF; --email-sub: #AAAAAA;
+  --email-inp-bg: #1A1A1A; --email-inp-bd: #444444; --email-inp-text: #FFFFFF;
+  --footer-text: #AAAAAA;
+  --score-bd: #111111; --score-bg: #F8F6F1;
+  --notice-bg: #FAFAFA; --next-bg: #FFFFFF;
+  --flag-bg: #FFF8F0; --flag-bd: #C9A84C;
+  --safe-bg: #FFF5F5; --safe-bd: #FFCDD2; --safe-text: #444444; --safe-link: #C62828;
+  --bmark-bg: #111111; --bmark-text: #FFFFFF; --bmark-sub: #AAAAAA;
+  --ret-bg: #FDFBF6; --ret-bd: #C9A84C;
+}
+[data-theme="dark"] {
+  --bg: #0F0F0F; --bg2: #1A1A1A; --bg3: #222222;
+  --text: #F0EDE6; --text2: #CCCCCC; --text3: #AAAAAA; --text4: #777777;
+  --border: #333333; --border2: #444444;
+  --topbar-bg: #000000; --topbar-sub: #666666;
+  --promise-bg: #1A1A1A;
+  --answer-bg: #1A1A1A; --answer-hover: #222222;
+  --answer-picked-bg: #C9A84C; --answer-picked-text: #111111;
+  --rg-bg: #0F1F0F; --rg-bd: #4CAF50;
+  --ra-bg: #1A1500; --ra-bd: #C9A84C;
+  --rr-bg: #1F0F0F; --rr-bd: #EF5350;
+  --email-bg: #1A1A1A; --email-text: #F0EDE6; --email-sub: #888888;
+  --email-inp-bg: #111111; --email-inp-bd: #333333; --email-inp-text: #F0EDE6;
+  --footer-text: #555555;
+  --score-bd: #C9A84C; --score-bg: #1A1A1A;
+  --notice-bg: #1A1A1A; --next-bg: #1A1A1A;
+  --flag-bg: #1A1500; --flag-bd: #C9A84C;
+  --safe-bg: #1F0F0F; --safe-bd: #EF5350; --safe-text: #CCCCCC; --safe-link: #EF5350;
+  --bmark-bg: #1A1A1A; --bmark-text: #F0EDE6; --bmark-sub: #888888;
+  --ret-bg: #1A1500; --ret-bd: #C9A84C;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'DM Sans', system-ui, sans-serif; min-height: 100vh; transition: background 0.3s, color 0.3s; }
+.page { max-width: 620px; margin: 0 auto; padding: 0 1.4rem 5rem; background: var(--bg); }
+.topbar { background: var(--topbar-bg); padding: 0.9rem 1.4rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.topbar-brand { font-family: 'DM Serif Display', Georgia, serif; font-size: 15px; color: var(--gold); text-decoration: none; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.topbar-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--topbar-sub); }
+.mode-btn { background: transparent; border: 1px solid #444; color: #888; font-size: 11px; padding: 4px 10px; cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif; transition: all 0.2s; }
+.mode-btn:hover { border-color: var(--gold); color: var(--gold); }
+.bmark-banner { background: var(--bmark-bg); border-bottom: 2px solid var(--gold); padding: 0.9rem 1.4rem; }
+.bmark-inner { max-width: 620px; margin: 0 auto; display: flex; align-items: flex-start; gap: 0.9rem; }
+.bmark-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.bmark-txt h4 { font-size: 13px; font-weight: 500; color: var(--bmark-text); margin-bottom: 3px; }
+.bmark-txt p { font-size: 12px; color: var(--bmark-sub); line-height: 1.5; }
+.bmark-dismiss { background: none; border: none; color: #666; font-size: 20px; cursor: pointer; padding: 0; margin-left: auto; flex-shrink: 0; line-height: 1; }
+.bmark-dismiss:hover { color: var(--gold); }
+.ret-banner { border-left: 4px solid var(--ret-bd); background: var(--ret-bg); padding: 1rem 1.2rem; margin: 1.4rem 0; display: none; }
+.ret-banner h4 { font-family: 'DM Serif Display', Georgia, serif; font-size: 16px; color: var(--text); margin-bottom: 4px; }
+.ret-banner p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.progress-wrap { padding: 1rem 0 0; margin-bottom: 0.5rem; }
+.progress-track { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--gold); transition: width 0.5s; }
+.progress-text { font-size: 11px; color: var(--text4); margin-top: 5px; }
+.screen { display: none; }
+.screen.active { display: block; }
+.section { padding-top: 2rem; }
+.label-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); font-weight: 500; margin-bottom: 6px; }
+h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 28px; line-height: 1.2; color: var(--text); margin-bottom: 0.8rem; }
+h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; line-height: 1.25; color: var(--text); margin-bottom: 0.7rem; }
+.lead { font-size: 16px; color: var(--text2); line-height: 1.65; margin-bottom: 1.2rem; }
+.body-text { font-size: 14px; color: var(--text3); line-height: 1.6; margin-bottom: 1rem; }
+.quiet { font-size: 12px; color: var(--text4); line-height: 1.6; }
+.promise { border-left: 3px solid var(--gold); padding: 0.9rem 1rem; margin: 1.2rem 0; background: var(--promise-bg); }
+.promise p { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 0.4rem; }
+.promise p:last-child { margin-bottom: 0; }
+.field-group { margin-bottom: 1rem; }
+.field-label { font-size: 13px; color: var(--text2); margin-bottom: 5px; display: block; font-weight: 500; }
+.field-input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; background: var(--answer-bg); color: var(--text); appearance: none; -webkit-appearance: none; border-radius: 0; transition: border-color 0.15s; }
+.field-input:focus { outline: none; border-color: var(--gold); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.q-num { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text4); margin-bottom: 6px; }
+.q-text { font-family: 'DM Serif Display', Georgia, serif; font-size: 19px; line-height: 1.4; color: var(--text); margin-bottom: 0.8rem; }
+.q-sub { font-size: 13px; color: var(--text3); margin-bottom: 1rem; line-height: 1.5; }
+.answers { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+.answer { padding: 12px 16px; border: 1px solid var(--border); background: var(--answer-bg); cursor: pointer; font-size: 14px; color: var(--text2); line-height: 1.45; transition: all 0.15s; user-select: none; -webkit-tap-highlight-color: transparent; }
+.answer:hover { border-color: var(--gold); background: var(--answer-hover); }
+.answer.picked { border-color: var(--answer-picked-bg); background: var(--answer-picked-bg); color: var(--answer-picked-text); }
+.divider { height: 1px; background: var(--border); margin: 1.4rem 0; }
+.btn-row { display: flex; gap: 10px; align-items: center; margin-top: 1.4rem; flex-wrap: wrap; }
+.btn { padding: 12px 26px; font-size: 14px; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 500; cursor: pointer; border: 1.5px solid var(--text); background: transparent; color: var(--text); letter-spacing: 0.03em; transition: all 0.15s; text-decoration: none; display: inline-block; }
+.btn:hover { background: var(--bg2); }
+.btn-dark { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn-dark:hover { background: var(--gold); border-color: var(--gold); color: #111111; }
+.btn-gold { background: var(--gold); border-color: var(--gold); color: #111111; }
+.btn-gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); color: #FFFFFF; }
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-back { font-size: 13px; color: var(--text4); background: none; border: none; cursor: pointer; padding: 8px 0; font-family: 'DM Sans', system-ui, sans-serif; }
+.btn-back:hover { color: var(--text); }
+.notice { font-size: 12px; color: var(--text3); line-height: 1.6; padding: 10px 12px; border: 1px solid var(--border); background: var(--notice-bg); margin-bottom: 1.2rem; }
+.score-reveal { text-align: center; padding: 2rem 1rem; border: 2px solid var(--score-bd); margin-bottom: 1.4rem; background: var(--score-bg); }
+.score-reveal-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 64px; line-height: 1; color: var(--text); }
+.score-reveal-label { font-size: 13px; color: var(--text4); margin-top: 4px; }
+.result-card { padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; border-left: 4px solid var(--gold); background: var(--ra-bg); }
+.result-card.green { border-left-color: var(--rg-bd); background: var(--rg-bg); }
+.result-card.amber { border-left-color: var(--ra-bd); background: var(--ra-bg); }
+.result-card.red   { border-left-color: var(--rr-bd); background: var(--rr-bg); }
+.result-card h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 18px; color: var(--text); margin-bottom: 6px; }
+.result-card p { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.next-card { border: 1px solid var(--border); padding: 1.2rem 1.4rem; margin-bottom: 0.9rem; background: var(--next-bg); }
+.next-card h4 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+.next-card p { font-size: 13px; color: var(--text3); line-height: 1.55; }
+.email-block { background: var(--email-bg); padding: 1.6rem; margin: 1.4rem 0; border: 1px solid var(--border); }
+.email-block h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: var(--email-text); margin-bottom: 8px; }
+.email-block p { font-size: 13px; color: var(--email-sub); line-height: 1.7; margin-bottom: 1rem; }
+.email-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.email-input { flex: 1; min-width: 200px; padding: 10px 12px; border: 1px solid var(--email-inp-bd); background: var(--email-inp-bg); color: var(--email-inp-text); font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; border-radius: 0; }
+.email-input::placeholder { color: #666666; }
+.email-input:focus { outline: none; border-color: var(--gold); }
+.email-skip { font-size: 12px; color: var(--email-sub); cursor: pointer; text-decoration: underline; margin-top: 0.8rem; display: inline-block; background: none; border: none; font-family: 'DM Sans', system-ui, sans-serif; }
+.email-skip:hover { color: var(--gold); }
+.soft-flag { background: var(--safe-bg); border: 1px solid var(--safe-bd); padding: 1rem 1.2rem; margin: 1rem 0; display: none; }
+.soft-flag p { font-size: 13px; color: var(--safe-text); line-height: 1.6; }
+.soft-flag a { color: var(--safe-link); font-weight: 500; text-decoration: none; }
+.flag-card { padding: 1rem 1.2rem; margin-bottom: 0.7rem; border-left: 3px solid var(--flag-bd); background: var(--flag-bg); }
+.flag-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.page-footer { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 11px; color: var(--footer-text); line-height: 1.7; }
+.page-footer a { color: var(--footer-text); text-decoration: underline; }
+@media (max-width: 480px) {
+  h1 { font-size: 24px; } h2 { font-size: 19px; } .q-text { font-size: 17px; }
+  .field-row { grid-template-columns: 1fr; } .score-reveal-num { font-size: 52px; }
+  .bmark-inner { flex-wrap: wrap; }
+}
 </style>
 </head>
 <body>
 
+<div class="bmark-banner" id="bmarkBanner">
+  <div class="bmark-inner">
+    <div class="bmark-icon">&#9873;</div>
+    <div class="bmark-txt">
+      <h4>Bookmark this page before you begin</h4>
+      <p>Your answers are saved privately on this device. If you close the browser and come back, everything will still be here. Bookmark now so you can find your way back - press Ctrl+D on a computer or use the share button on your phone.</p>
+    </div>
+    <button class="bmark-dismiss" onclick="dismissBmark()" aria-label="Dismiss">&#215;</button>
+  </div>
+</div>
+
 <div class="topbar">
   <a href="https://parents2beintl.com" class="topbar-brand">Parents2Be International</a>
-  <span class="topbar-tag">For new fathers</span>
+  <div class="topbar-right">
+    <span class="topbar-tag">For new fathers</span>
+    <button class="mode-btn" id="modeBtn" onclick="toggleMode()">Dark mode</button>
+  </div>
 </div>
 
 <div class="page">
 
-  <!-- SCREEN 0: WELCOME -->
   <div class="screen active" id="s0">
     <div class="section">
+      <div class="ret-banner" id="retBanner">
+        <h4>We are really glad you have come back.</h4>
+        <p>It is ok to take your time - we know life is busy and this takes something. Your answers are exactly where you left them. Pick up whenever you are ready.</p>
+      </div>
       <div class="label-tag">Parents2Be International</div>
       <h1>How have you been doing lately?</h1>
       <p class="lead">This is a quiet space. Just you and some honest questions. No one is watching, nothing is being judged, and there are no wrong answers.</p>
-
       <div class="promise">
         <p>This takes about 5 minutes.</p>
-        <p>Your answers are private. You can skip anything you are not ready for.</p>
+        <p>Your answers are saved privately on this device. You can stop and come back at any point.</p>
         <p>At the end you will get a clear, honest picture of how you are doing - and what, if anything, you might want to do next. That part is always your choice.</p>
       </div>
-
       <p class="body-text">A lot of new fathers feel something is off but cannot name it. They put their head down, keep going, and quietly fall apart. This tool exists because that should not have to happen.</p>
-
-      <p class="quiet">Built by Rah, founder of Parents2Be International. NHS eLfH Perinatal Mental Health trained. This is not a clinical diagnosis. It is a starting point.</p>
-
+      <p class="quiet">Built by Sarah Bailey, Founder of Parents2Be International. NHS eLfH Perinatal Mental Health trained. This is not a clinical diagnosis. It is a starting point.</p>
       <div class="divider"></div>
-
       <div class="btn-row">
-        <button class="btn btn-dark" onclick="go(1)">Start - I am ready</button>
+        <button class="btn btn-dark" id="startBtn" onclick="handleStart()">Start - I am ready</button>
       </div>
       <div style="margin-top:0.8rem">
         <span class="quiet">Already know what you are looking for?</span>
-        <a href="https://parents2beintl.com" style="font-size:13px;color:#8B6914;margin-left:6px;text-decoration:none">Visit our site</a>
+        <a href="https://parents2beintl.com" style="font-size:13px;color:var(--gold-dark);margin-left:6px;text-decoration:none">Visit our site</a>
       </div>
     </div>
   </div>
 
-  <!-- SCREEN 1: ABOUT YOU (CONTEXT) -->
   <div class="screen" id="s1">
     <div class="progress-wrap">
       <div class="progress-track"><div class="progress-fill" style="width:8%"></div></div>
@@ -517,78 +207,61 @@
     </div>
     <div class="section">
       <div class="label-tag">A little about you</div>
-      <h2>First, a few quick things so we can make this more relevant to you</h2>
-      <p class="body-text">None of this is required. Skip anything you prefer not to answer. These details are never shared and never stored against your name.</p>
-
+      <h2>A few quick things to make this more relevant to you</h2>
+      <p class="body-text">None of this is required. These details help us give you more relevant information - they are never shared and never stored against your name.</p>
       <div class="field-row">
         <div class="field-group">
-          <label class="field-label">Your age <span class="optional">(optional)</span></label>
-          <select class="field-input" id="dadAge">
-            <option value="">Prefer not to say</option>
-            <option>Under 20</option>
-            <option>20 to 24</option>
-            <option>25 to 29</option>
-            <option>30 to 34</option>
-            <option>35 to 39</option>
-            <option>40 to 44</option>
-            <option>45 and over</option>
+          <label class="field-label">Your age</label>
+          <select class="field-input" id="dadAge" onchange="saveCtx()">
+            <option value="">Please select</option>
+            <option>20 to 25</option><option>25 to 30</option><option>30 to 35</option>
+            <option>35 to 40</option><option>40 to 45</option><option>45 and over</option>
+            <option value="nts">Prefer not to say</option>
           </select>
         </div>
         <div class="field-group">
-          <label class="field-label">Your baby's age <span class="optional">(optional)</span></label>
-          <select class="field-input" id="babyAge">
-            <option value="">Prefer not to say</option>
-            <option>Pregnant - not born yet</option>
-            <option>0 to 4 weeks</option>
-            <option>1 to 3 months</option>
-            <option>3 to 6 months</option>
-            <option>6 to 12 months</option>
-            <option>Over 12 months</option>
+          <label class="field-label">Your baby's age</label>
+          <select class="field-input" id="babyAge" onchange="saveCtx()">
+            <option value="">Please select</option>
+            <option>Not born yet</option><option>0 to 6 months</option>
+            <option>6 to 9 months</option><option>9 to 12 months</option>
+            <option>12 to 18 months</option>
+            <option value="nts">Prefer not to say</option>
           </select>
         </div>
       </div>
-
       <div class="field-row">
         <div class="field-group">
-          <label class="field-label">Number of children <span class="optional">(optional)</span></label>
-          <select class="field-input" id="numKids">
-            <option value="">Prefer not to say</option>
-            <option>1 - this is my first</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4 or more</option>
+          <label class="field-label">Number of children</label>
+          <select class="field-input" id="numKids" onchange="saveCtx()">
+            <option value="">Please select</option>
+            <option>1 - this is my first</option><option>2</option><option>3</option><option>4 or more</option>
+            <option value="nts">Prefer not to say</option>
           </select>
         </div>
         <div class="field-group">
-          <label class="field-label">Your situation <span class="optional">(optional)</span></label>
-          <select class="field-input" id="situation">
-            <option value="">Prefer not to say</option>
-            <option>Married</option>
-            <option>Co-habiting partner</option>
-            <option>Co-parenting - not living together</option>
-            <option>Single parent</option>
-            <option>Separated or divorcing</option>
-            <option>Serving in the armed forces</option>
-            <option>Other</option>
+          <label class="field-label">Your situation</label>
+          <select class="field-input" id="situation" onchange="saveCtx()">
+            <option value="">Please select</option>
+            <option>Married</option><option>Co-habiting partner</option>
+            <option>Co-parenting - not living together</option><option>Single parent</option>
+            <option>Separated or divorcing</option><option>Serving in the armed forces</option>
+            <option value="nts">Prefer not to say</option>
           </select>
         </div>
       </div>
-
       <div class="field-group">
-        <label class="field-label">Your current home situation <span class="optional">(optional)</span></label>
-        <select class="field-input" id="housing">
-          <option value="">Prefer not to say</option>
-          <option>Home owner</option>
-          <option>Renting</option>
+        <label class="field-label">Your current home situation</label>
+        <select class="field-input" id="housing" onchange="saveCtx()">
+          <option value="">Please select</option>
+          <option>Home owner</option><option>Renting</option>
           <option>Living with family or friends</option>
           <option>In temporary or emergency housing</option>
           <option>Waiting on housing</option>
-          <option>Other</option>
+          <option value="nts">Prefer not to say</option>
         </select>
       </div>
-
-      <div class="notice">Research shows that your living situation, relationship status, and support network all affect how new fathers experience this period. These details help us give you more relevant information - nothing more.</div>
-
+      <div class="notice">Research shows that your living situation, relationship status, and support network all have a real bearing on how new fathers experience this period. These details help us give you more relevant information - nothing more.</div>
       <div class="divider"></div>
       <div class="btn-row">
         <button class="btn-back" onclick="go(0)">Back</button>
@@ -597,49 +270,44 @@
     </div>
   </div>
 
-  <!-- SCREEN 2: QUESTIONS INTRO -->
   <div class="screen" id="s2">
     <div class="progress-wrap">
       <div class="progress-track"><div class="progress-fill" style="width:18%"></div></div>
-      <div class="progress-text">About to begin the questions</div>
+      <div class="progress-text">About to begin</div>
     </div>
     <div class="section">
       <div class="label-tag">Before you start</div>
-      <h2>These questions are about the past month</h2>
-      <p class="lead">There are 13 questions. Each one asks you to think about how things have felt recently - not how you think they should feel, not how you are performing. Just how things actually are.</p>
-
+      <h2>These questions are about how things have actually been for you recently</h2>
+      <p class="lead">There are 13 questions. Each one asks you to think honestly about how things have felt - not how you think they should feel, and not the version you show everyone else.</p>
       <div class="promise">
-        <p>There are no right or wrong answers here.</p>
-        <p>Some questions might feel uncomfortable. That is normal. Take your time with each one.</p>
-        <p>If at any point you want to stop, you can. Come back when you are ready.</p>
+        <p>Everything you are feeling is worth taking seriously. Nothing here will be dismissed.</p>
+        <p>Some questions might feel uncomfortable. That is completely understandable. Take your time.</p>
+        <p>If you need to stop, your answers are saved. Come back whenever you are ready.</p>
       </div>
-
       <div class="btn-row">
         <button class="btn-back" onclick="go(1)">Back</button>
-        <button class="btn btn-dark" onclick="startQuestions()">I am ready - begin</button>
+        <button class="btn btn-dark" onclick="go(3);showQ(currentQ)">I am ready - begin</button>
       </div>
     </div>
   </div>
 
-  <!-- SCREEN 3: QUESTIONS (built dynamically) -->
   <div class="screen" id="s3">
     <div class="progress-wrap">
-      <div class="progress-track"><div class="progress-fill" id="q-progress-fill" style="width:20%"></div></div>
-      <div class="progress-text" id="q-progress-text">Question 1 of 13</div>
+      <div class="progress-track"><div class="progress-fill" id="qpf" style="width:20%"></div></div>
+      <div class="progress-text" id="qpt">Question 1 of 13</div>
     </div>
     <div class="section">
-      <div id="question-area"></div>
-      <div class="soft-flag" id="soft-flag">
-        <p>It sounds like things have been really difficult. You do not have to keep going right now. If you need to speak to someone today, the <a href="tel:116123">Samaritans are available 24 hours a day on 116 123</a> - free, confidential, no pressure.</p>
+      <div id="qa"></div>
+      <div class="soft-flag" id="sflag">
+        <p>What you have just shared matters. You do not have to keep going right now if you are not ready. If you need to speak to someone today, the <a href="tel:116123">Samaritans are available 24 hours on 116 123</a> - free, completely confidential, no pressure to say the right thing.</p>
       </div>
       <div class="btn-row">
-        <button class="btn-back" id="q-back-btn" onclick="prevQuestion()">Back</button>
-        <button class="btn btn-dark" id="q-next-btn" onclick="nextQuestion()" disabled>Next</button>
+        <button class="btn-back" id="qbb" onclick="prevQ()" style="display:none">Back</button>
+        <button class="btn btn-dark" id="qnb" onclick="nextQ()" disabled>Next</button>
       </div>
     </div>
   </div>
 
-  <!-- SCREEN 4: ALMOST DONE -->
   <div class="screen" id="s4">
     <div class="progress-wrap">
       <div class="progress-track"><div class="progress-fill" style="width:88%"></div></div>
@@ -647,48 +315,46 @@
     </div>
     <div class="section">
       <div class="label-tag">One last thing</div>
-      <h2>Just a couple more questions before we show you your results</h2>
-
+      <h2>Just a couple more before we show you your results</h2>
       <div class="field-group">
-        <label class="field-label">How would you describe your sleep right now? <span class="optional">(optional)</span></label>
-        <select class="field-input" id="sleep">
-          <option value="">Prefer not to say</option>
-          <option value="ok">Roughly ok - getting 5 or more hours most nights</option>
-          <option value="disrupted">Broken - frequently under 4 hours</option>
-          <option value="chronic">Very little for a long time - weeks or more</option>
+        <label class="field-label">How would you describe your sleep right now - at the time you would normally sleep?</label>
+        <select class="field-input" id="sleep" onchange="saveCtx()">
+          <option value="">Please select</option>
+          <option value="ok">Managing to get some rest when I can</option>
+          <option value="disrupted">Broken and frequently under 4 hours - it is taking its toll</option>
+          <option value="chronic">Barely sleeping - this has been going on for a long time</option>
+          <option value="nts">Prefer not to say</option>
         </select>
       </div>
-
       <div class="field-group">
-        <label class="field-label">Do you have people around you right now - friends, family, anyone? <span class="optional">(optional)</span></label>
-        <select class="field-input" id="support">
-          <option value="">Prefer not to say</option>
+        <label class="field-label">Do you have people around you right now - friends, family, anyone?</label>
+        <select class="field-input" id="support" onchange="saveCtx()">
+          <option value="">Please select</option>
           <option value="good">Yes - people I can actually talk to</option>
-          <option value="limited">A few people but not really available</option>
-          <option value="isolated">Honestly - not really. I am doing this alone</option>
+          <option value="limited">A few people but not really available when I need them</option>
+          <option value="isolated">Not really - I am carrying this mostly alone</option>
+          <option value="nts">Prefer not to say</option>
         </select>
       </div>
-
       <div class="field-group">
-        <label class="field-label">Are you currently working? <span class="optional">(optional)</span></label>
-        <select class="field-input" id="work">
-          <option value="">Prefer not to say</option>
+        <label class="field-label">Are you currently working?</label>
+        <select class="field-input" id="work" onchange="saveCtx()">
+          <option value="">Please select</option>
           <option value="fulltime">Back to full-time work</option>
-          <option value="parttime">Part-time or flexible</option>
+          <option value="parttime">Part-time or flexible arrangements</option>
           <option value="leave">On paternity or parental leave</option>
           <option value="unemployed">Not working right now</option>
+          <option value="nts">Prefer not to say</option>
         </select>
       </div>
-
       <div class="divider"></div>
       <div class="btn-row">
-        <button class="btn-back" onclick="go(3);showQuestion(currentQ)">Back</button>
+        <button class="btn-back" onclick="go(3);showQ(currentQ)">Back</button>
         <button class="btn btn-dark" onclick="buildResult()">Show me my results</button>
       </div>
     </div>
   </div>
 
-  <!-- SCREEN 5: RESULTS -->
   <div class="screen" id="s5">
     <div class="progress-wrap">
       <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
@@ -696,441 +362,177 @@
     </div>
     <div class="section">
       <div class="label-tag">Here is where you are right now</div>
-
       <div class="score-reveal">
-        <div class="score-reveal-num" id="r-score">0</div>
-        <div class="score-reveal-label" id="r-score-label">out of 39</div>
+        <div class="score-reveal-num" id="rScore">0</div>
+        <div class="score-reveal-label" id="rLabel">out of 39</div>
       </div>
-
-      <div id="r-band"></div>
-
+      <div id="rBand"></div>
       <div class="divider"></div>
-
-      <div id="r-context-flags"></div>
-
-      <div id="r-next-steps"></div>
-
-      <!-- EMAIL CAPTURE -->
-      <div class="email-block" id="email-block">
-        <h3>Want to keep this somewhere safe?</h3>
-        <p>We can send you your results and a free guide to what they mean - no account needed, no spam, unsubscribe any time. It takes 10 seconds.</p>
+      <div id="rFlags"></div>
+      <div id="rSteps"></div>
+      <div class="email-block" id="emailBlock">
+        <h3>Keep your results somewhere safe</h3>
+        <p>If you would like to hold onto these results for when you are ready - whether that is for a conversation with your GP, a visit from your health visitor, or just to look back at in your own time - we can send them to you now.</p>
+        <p>No account needed. Nothing shared with anyone. Unsubscribe at any point. Your results also come with our free 7 Signs guide - so you have something that explains what you are going through and gives you words for it when you need them.</p>
         <div class="email-row">
-          <input class="email-input" type="email" id="emailInput" placeholder="Your email address">
+          <input class="email-input" type="email" id="emailIn" placeholder="Your email address">
           <button class="btn btn-gold" onclick="submitEmail()">Send me my results</button>
         </div>
-        <button class="email-skip" onclick="skipEmail()">No thanks - just show me the resources</button>
+        <button class="email-skip" onclick="skipEmail()">Not right now - just show me the resources</button>
       </div>
-
-      <div id="r-resources" style="display:none"></div>
-
+      <div id="rRes" style="display:none"></div>
       <div class="page-footer">
         <div>Parents2Be International - parents2beintl.com</div>
-        <div>Built by Rah, founder. NHS eLfH Perinatal Mental Health trained (100%).</div>
-        <div>This assessment uses the Gotland Male Depression Scale (Walinder and Rutz, 2001), a validated tool for male depression screening. It is not a clinical diagnosis.</div>
+        <div>Built by Sarah Bailey, Founder of Parents2Be International. NHS eLfH Perinatal Mental Health trained (100%).</div>
+        <div>This assessment uses the Gotland Male Depression Scale (Walinder and Rutz, 2001), a validated tool for male depression screening. It is not a clinical diagnosis. It is a starting point for getting the right support.</div>
         <div style="margin-top:0.5rem"><a href="https://parents2beintl.com">Home</a> - <a href="https://parents2beintl.com/privacy">Privacy</a></div>
       </div>
     </div>
   </div>
 
-</div><!-- end .page -->
+</div>
 
 <script>
-// ============================================================
-// QUESTIONS - plain language Gotland, scoring hidden
-// ============================================================
-const QUESTIONS = [
-  {
-    text: "Over the past month, how easily have you been getting wound up or frustrated - by things that would not normally bother you that much?",
-    sub: "Think about small things - traffic, noise, a slow queue, a comment that landed wrong.",
-    answers: [
-      "Not really - I have been pretty steady",
-      "A bit more than usual but nothing major",
-      "Noticeably - things have been getting to me that should not",
-      "A lot - I feel like I am constantly on edge"
-    ]
-  },
-  {
-    text: "Have you found yourself snapping at people, or feeling angry in a way that does not quite feel like you?",
-    sub: "This can show up as short temper, sarcasm, saying things you regret, or just feeling irritated all the time.",
-    answers: [
-      "Not really - I have been mostly myself",
-      "Occasionally - more short-tempered than usual",
-      "Yes - it is happening regularly and I notice it",
-      "Yes - it is affecting my relationships and I am worried about it"
-    ]
-  },
-  {
-    text: "How well have you been able to switch off and relax?",
-    sub: "Even when you have a quiet moment - can you actually rest, or does your head keep going?",
-    answers: [
-      "Pretty well - I can unwind when I get the chance",
-      "Slightly harder than usual but I get there",
-      "Difficult - I struggle to settle even when I should be able to",
-      "I cannot switch off at all - my mind or body is constantly restless"
-    ]
-  },
-  {
-    text: "How have you been sleeping - setting aside the obvious disruption of having a new baby?",
-    sub: "We know all new parents lose sleep. This question is about whether anything beyond that is going on for you.",
-    answers: [
-      "About what you would expect with a new baby",
-      "Worse than it should be - I struggle to sleep even when I have the chance",
-      "Really struggling - sleep is a problem most nights",
-      "Barely sleeping - it has been like this for a while"
-    ]
-  },
-  {
-    text: "Have you been drinking more alcohol than usual, or finding yourself turning to anything else to take the edge off?",
-    sub: "No judgement here. This is about noticing patterns, not making you feel bad.",
-    answers: [
-      "No - nothing has changed",
-      "Maybe slightly more - nothing that concerns me",
-      "Yes - I have noticed I am using it to cope",
-      "Yes - and I am a bit worried about how much it has crept up"
-    ]
-  },
-  {
-    text: "On an average day recently, how would you describe your mood?",
-    sub: "Not the performance you put on for others. The honest version.",
-    answers: [
-      "Generally ok - up and down like anyone but mostly fine",
-      "Flat or a bit low more often than not",
-      "Low most of the time - it takes real effort to feel anything positive",
-      "Very low - I feel empty or sad most of the time"
-    ]
-  },
-  {
-    text: "How is your energy? Not just physically tired - but that deeper feeling of being completely used up.",
-    sub: "The kind of exhaustion that sleep does not fix.",
-    answers: [
-      "Tired but managing - that is normal right now",
-      "Running low - more than just tiredness",
-      "Genuinely depleted - I am pushing through everything",
-      "I have nothing left - I am completely burnt out"
-    ]
-  },
-  {
-    text: "Have you been able to focus, make decisions, or keep on top of things the way you normally would?",
-    sub: "At work, at home, with small tasks - anything where your head just does not seem to be doing its job.",
-    answers: [
-      "Yes - mostly on top of things",
-      "A bit harder than usual but I am managing",
-      "Struggling - concentration and decisions feel much harder",
-      "Really struggling - I am making mistakes or avoiding things I normally handle"
-    ]
-  },
-  {
-    text: "Have you pulled back from things you normally enjoy or people you normally spend time with?",
-    sub: "Hobbies, mates, going out, being present at home - anything you have quietly stepped back from.",
-    answers: [
-      "Not really - I am still engaging with life",
-      "A little - less motivated but still connected",
-      "Noticeably - I have stepped back from quite a few things",
-      "Significantly - I have largely withdrawn from people and things I used to enjoy"
-    ]
-  },
-  {
-    text: "Have you been hard on yourself - feeling like you are failing as a father, a partner, or just as a person?",
-    sub: "This is different from normal self-improvement. It is the voice that will not let you off the hook no matter what you do.",
-    answers: [
-      "Not more than usual",
-      "Occasionally - I have my doubts but it passes",
-      "Often - I regularly feel like I am not good enough",
-      "Constantly - the feeling that I am failing does not go away"
-    ]
-  },
-  {
-    text: "Have you been experiencing physical symptoms you cannot quite explain - headaches, back pain, chest tightness, stomach issues?",
-    sub: "Sometimes the body carries what the mind is struggling with.",
-    answers: [
-      "Nothing out of the ordinary",
-      "A couple of minor things but nothing I am too bothered about",
-      "Yes - a few persistent physical things I have noticed",
-      "Yes - my body feels like it is carrying a lot right now"
-    ]
-  },
-  {
-    text: "Have you been throwing yourself into work, the gym, DIY, or anything else - sometimes to the point where it feels like you cannot stop?",
-    sub: "Staying busy is not always a bad thing. But sometimes it is how we avoid stopping long enough to feel something.",
-    answers: [
-      "No more than usual",
-      "A bit busier than normal but I know why",
-      "Yes - I notice I use it to avoid slowing down",
-      "Yes - I think I am using it to block out how I am actually feeling"
-    ]
-  },
-  {
-    text: "Have you had any thoughts - even passing ones - about not wanting to be here, disappearing, or that everyone would be better off without you?",
-    sub: "This is the hardest question. You do not have to answer it. But if it is happening, it matters and you deserve support.",
-    answers: [
-      "No - nothing like that",
-      "Occasionally a passing thought - nothing I have acted on",
-      "More than occasionally - it is something that comes up",
-      "Yes - and it feels serious"
-    ],
-    isSensitive: true
-  }
+const QS=[
+  {t:"Over the past while, how easily have you been getting wound up or frustrated - by things that would not normally bother you that much?",s:"Think about small things - traffic, noise, a slow queue, a comment that landed wrong. These reactions are worth paying attention to.",a:["Fairly steady - not noticing much change in how things affect me","A bit more reactive than I would usually be - it is noticeable","Things have been getting to me in ways that feel disproportionate","I feel like I am constantly on edge - almost everything is triggering a reaction"]},
+  {t:"Have you found yourself snapping at people, or feeling angry in a way that does not quite feel like you?",s:"This can show up as short temper, sarcasm, saying things you regret, or a low-level irritation that does not seem to switch off.",a:["Not particularly - my reactions have felt like my own","Occasionally - more short-tempered than I would normally be","Yes - it is happening regularly and I am aware of it","Yes - it is affecting the people around me and I am genuinely concerned"]},
+  {t:"How well have you been able to switch off and relax?",s:"Even when you have a quiet moment - can you actually rest, or does your body stay tense and your head keep going?",a:["I can generally unwind when I get the chance","It takes longer than it used to but I get there eventually","I struggle to settle even in moments when I should be able to","I cannot switch off at all - my mind and body stay restless regardless"]},
+  {t:"How have you been sleeping - during the time you would normally sleep?",s:"This is not just about how much sleep you are getting. It is about whether you can sleep when you have the chance - regardless of whether you work days, nights, or shifts.",a:["I am managing to get some rest when the opportunity is there","Harder than it should be - I struggle to sleep even when I could","Sleep is a real issue - I am either unable to sleep or sleeping to escape","I am running on very little and it has been this way for some time"]},
+  {t:"Have you noticed yourself turning to anything more than usual to take the edge off?",s:"This could be alcohol - but it could also be anything you reach for when things feel heavy. Staying out longer, working late, delaying going home, gaming, scrolling, hobbies, exercise. There is no judgement here. This is about noticing what the pattern might be telling you.",a:["Not really - nothing has changed in how I manage day to day","Perhaps slightly - I have noticed it but it does not feel like a problem yet","Yes - I have found myself relying on something to get through and I know it","Yes - it has escalated and I am aware it is becoming a way of coping rather than a choice"]},
+  {t:"On an average day recently, how would you honestly describe your mood?",s:"Not the version you show at work or to your family. The version that exists when you are on your own and the performance is off.",a:["Generally holding - up and down but nothing that stays","Flat more often than not - harder to find anything that lifts it","Low most of the time - it takes real effort to access anything positive","Very low or empty - I am going through the motions but not really present"]},
+  {t:"How is your energy? Not just physically tired - but that deeper feeling of being completely used up.",s:"The kind of exhaustion that sleep does not fix. The kind where you wake up already depleted.",a:["Low but manageable - I can still function and find moments of energy","Running lower than I would like - more than tiredness, something heavier","Genuinely depleted - I am pushing through everything on reserve","I have nothing left - I am completely emptied out and functioning on will alone"]},
+  {t:"Have you been able to focus, make decisions, or keep on top of things the way you normally would?",s:"At work, at home, with small tasks - anything where your head just does not seem to be operating the way it used to.",a:["Mostly - I am keeping up with things well enough","A bit harder than usual - slower, less sharp, but still managing","Noticeably struggling - concentration and decisions feel much heavier than they should","Finding it very hard - I am avoiding decisions or making mistakes I would not normally make"]},
+  {t:"Have you pulled back from things you normally enjoy or people you normally spend time with?",s:"Hobbies, friends, going out, being fully present at home - anything you have quietly stepped back from without necessarily deciding to.",a:["Not much - I am still engaging with the things and people that matter to me","A little - less motivated but still making the effort","Quite a bit - I have pulled back from a number of things I used to value","Significantly - I have largely withdrawn and the distance feels hard to close"]},
+  {t:"Have you been hard on yourself - feeling like you are failing as a father, a partner, or just as a person?",s:"This is not the same as normal self-reflection or wanting to improve. It is the voice that will not let you off the hook no matter how hard you try or how well things are actually going.",a:["No more than I would usually question myself","Occasionally - doubts come but they pass","Frequently - I return to feelings of not being good enough again and again","Constantly - the sense that I am failing feels persistent and I cannot shake it"]},
+  {t:"Have you been experiencing physical symptoms you cannot quite account for - headaches, back pain, chest tightness, stomach issues?",s:"The body often carries what the mind is struggling to process. These physical experiences are real and they are worth noting.",a:["Nothing I would flag as out of the ordinary","One or two things that have come up - minor but present","A few persistent things that keep returning and I have not been able to resolve","My body is clearly carrying something - the physical symptoms have become hard to ignore"]},
+  {t:"Have you been throwing yourself into work, the gym, DIY, or keeping constantly busy - to the point where slowing down feels almost impossible?",s:"Staying productive is not always a problem. But when the activity becomes something you cannot stop, it is sometimes because stopping means feeling something you are not ready for.",a:["No more than I would usually - I can stop and be present when I want to","A bit busier than normal - I notice it but I can still slow down","I find it hard to stop - activity feels like the only way to keep going","I am using it to block things out - the busyness is deliberate and I know it"]},
+  {t:"Have you had any thoughts - even passing ones - about not wanting to be here, disappearing, or that everyone would be better off without you?",s:"This is the hardest question and you do not have to answer it. But if these thoughts have been present - even briefly, even quietly - that is something that deserves care and support, not silence.",a:["No - those thoughts have not been present","A passing thought - it has crossed my mind but not stayed","More than occasionally - it comes up and it is something I am aware of","It is there and it feels serious - I need support with this"],sensitive:true}
 ];
 
-let scores = new Array(13).fill(null);
-let currentQ = 0;
-let totalScore = 0;
+const KS='p2bi-scores',KQ='p2bi-cq',KC='p2bi-ctx',KSC='p2bi-scr',KBD='p2bi-bd';
+let scores=new Array(13).fill(null),currentQ=0,totalScore=0;
 
-function go(n) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('s' + n).classList.add('active');
-  window.scrollTo(0, 0);
+(function(){
+  const s=localStorage.getItem('p2bi-theme');
+  const d=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const t=s||(d?'dark':'light');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  updModeBtn(t);
+})();
+
+function toggleMode(){
+  const c=document.documentElement.getAttribute('data-theme');
+  const n=c==='dark'?'light':'dark';
+  if(n==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('p2bi-theme',n);
+  updModeBtn(n);
+}
+function updModeBtn(t){const b=document.getElementById('modeBtn');if(b)b.textContent=t==='dark'?'Light mode':'Dark mode';}
+
+function dismissBmark(){document.getElementById('bmarkBanner').style.display='none';localStorage.setItem(KBD,'1');}
+(function(){if(localStorage.getItem(KBD)==='1'){const b=document.getElementById('bmarkBanner');if(b)b.style.display='none';}})();
+
+function loadSaved(){
+  try{
+    const ss=localStorage.getItem(KS);
+    const sq=localStorage.getItem(KQ);
+    if(ss){const p=JSON.parse(ss);if(Array.isArray(p)&&p.length===13)scores=p;}
+    if(sq!==null)currentQ=parseInt(sq)||0;
+    const sc=localStorage.getItem(KC);
+    if(sc){const ctx=JSON.parse(sc);['dadAge','babyAge','numKids','situation','housing','sleep','support','work'].forEach(id=>{const el=document.getElementById(id);if(el&&ctx[id])el.value=ctx[id];});}
+    if(ss&&scores.some(s=>s!==null)){document.getElementById('retBanner').style.display='block';document.getElementById('startBtn').textContent='Continue where I left off';}
+  }catch(e){}
 }
 
-function startQuestions() {
-  currentQ = 0;
-  scores = new Array(13).fill(null);
-  go(3);
-  showQuestion(0);
+function saveSc(){try{localStorage.setItem(KS,JSON.stringify(scores));localStorage.setItem(KQ,currentQ);}catch(e){}}
+function saveCtx(){try{const ctx={};['dadAge','babyAge','numKids','situation','housing','sleep','support','work'].forEach(id=>{const el=document.getElementById(id);if(el)ctx[id]=el.value;});localStorage.setItem(KC,JSON.stringify(ctx));}catch(e){}}
+function clearSaved(){[KS,KQ,KC,KSC].forEach(k=>{try{localStorage.removeItem(k);}catch(e){}});}
+
+function go(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('s'+n).classList.add('active');window.scrollTo(0,0);}
+function handleStart(){if(scores.some(s=>s!==null)){go(3);showQ(currentQ);}else{go(1);}}
+
+function showQ(idx){
+  const q=QS[idx];
+  document.getElementById('qpf').style.width=(20+(idx/13)*65)+'%';
+  document.getElementById('qpt').textContent='Question '+(idx+1)+' of 13';
+  document.getElementById('qa').innerHTML=`<div class="q-num">Question ${idx+1} of 13</div><div class="q-text">${q.t}</div>${q.s?'<div class="q-sub">'+q.s+'</div>':''}<div class="answers" id="an${idx}">${q.a.map((a,v)=>`<div class="answer" onclick="pickA(${idx},${v},this)">${a}</div>`).join('')}</div>`;
+  if(scores[idx]!==null){const opts=document.querySelectorAll('#an'+idx+' .answer');if(opts[scores[idx]])opts[scores[idx]].classList.add('picked');document.getElementById('qnb').disabled=false;}
+  else document.getElementById('qnb').disabled=true;
+  const fl=document.getElementById('sflag');
+  fl.style.display=(q.sensitive&&scores[idx]!==null&&scores[idx]>=2)?'block':'none';
+  document.getElementById('qbb').style.display=idx===0?'none':'inline-block';
 }
 
-function showQuestion(idx) {
-  const q = QUESTIONS[idx];
-  const pct = 20 + (idx / 13) * 65;
-  document.getElementById('q-progress-fill').style.width = pct + '%';
-  document.getElementById('q-progress-text').textContent = 'Question ' + (idx + 1) + ' of 13';
-
-  const area = document.getElementById('question-area');
-  area.innerHTML = `
-    <div class="q-num">Question ${idx + 1} of 13</div>
-    <div class="q-text">${q.text}</div>
-    ${q.sub ? '<div class="q-sub">' + q.sub + '</div>' : ''}
-    <div class="answers" id="answers-${idx}">
-      ${q.answers.map((a, v) => `<div class="answer" onclick="pickAnswer(${idx},${v},this)">${a}</div>`).join('')}
-    </div>
-  `;
-
-  // Restore previous selection if going back
-  if (scores[idx] !== null) {
-    const answers = document.querySelectorAll('#answers-' + idx + ' .answer');
-    if (answers[scores[idx]]) answers[scores[idx]].classList.add('picked');
-    document.getElementById('q-next-btn').disabled = false;
-  } else {
-    document.getElementById('q-next-btn').disabled = true;
-  }
-
-  // Sensitive question handling
-  const flag = document.getElementById('soft-flag');
-  if (q.isSensitive && scores[idx] !== null && scores[idx] >= 2) {
-    flag.style.display = 'block';
-  } else {
-    flag.style.display = 'none';
-  }
-
-  document.getElementById('q-back-btn').style.display = idx === 0 ? 'none' : 'inline-block';
-}
-
-function pickAnswer(qIdx, val, el) {
-  scores[qIdx] = val;
-  document.querySelectorAll('#answers-' + qIdx + ' .answer').forEach(a => a.classList.remove('picked'));
+function pickA(qi,v,el){
+  scores[qi]=v;
+  document.querySelectorAll('#an'+qi+' .answer').forEach(a=>a.classList.remove('picked'));
   el.classList.add('picked');
-  document.getElementById('q-next-btn').disabled = false;
-
-  // Show soft support flag on sensitive question if score is high
-  if (QUESTIONS[qIdx].isSensitive && val >= 2) {
-    document.getElementById('soft-flag').style.display = 'block';
-  } else {
-    document.getElementById('soft-flag').style.display = 'none';
-  }
-
-  // Track progress in GA
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'question_answered', { question_number: qIdx + 1, value: val });
-  }
+  document.getElementById('qnb').disabled=false;
+  saveSc();
+  if(QS[qi].sensitive&&v>=2)document.getElementById('sflag').style.display='block';
+  else document.getElementById('sflag').style.display='none';
+  if(typeof gtag!=='undefined')gtag('event','question_answered',{question_number:qi+1,value:v});
 }
 
-function nextQuestion() {
-  if (currentQ < 12) {
-    currentQ++;
-    showQuestion(currentQ);
-  } else {
-    go(4);
-  }
+function nextQ(){if(currentQ<12){currentQ++;saveSc();showQ(currentQ);}else go(4);}
+function prevQ(){if(currentQ>0){currentQ--;saveSc();showQ(currentQ);}}
+
+function getBand(s){
+  if(s<=12)return{cls:'green',h:'You are holding on - and that matters',m:'What you have shared does not show the kind of patterns that indicate serious concern right now. That does not mean everything is easy or that what you are feeling is not real. It means that right now the signs are within a range where early awareness and support can keep things from building.',o:'You came here. You answered honestly. That is not nothing. The things that grow into something harder rarely announce themselves - which is exactly why what you did today matters.',cta:'light'};
+  if(s<=26)return{cls:'amber',h:'There is something here that deserves attention',m:'What you have shared points to a level of difficulty that is real, clinically significant, and worth taking seriously. This is not weakness. This is not just the pressure of new fatherhood. These are patterns that, if left unaddressed, tend to deepen.',o:'You do not have to be in crisis to deserve support. What you are feeling right now is exactly the point at which things can be turned around - with the right tools and the right conversation.',cta:'medium'};
+  return{cls:'red',h:'What you are carrying is serious and you deserve support now',m:'What you have shared describes a significant level of difficulty. This is clinically meaningful. It is not something to push through alone or wait out. Getting the right support now - not later - is the most important thing you can do.',o:'You reached out by being here. That took something. The next step is one conversation - with your GP, with a health visitor, with the Samaritans. You do not need to have the words perfectly formed before you go.',cta:'urgent'};
 }
 
-function prevQuestion() {
-  if (currentQ > 0) {
-    currentQ--;
-    showQuestion(currentQ);
-  }
-}
+function buildResult(){
+  totalScore=scores.reduce((a,b)=>a+(b||0),0);
+  const band=getBand(totalScore);
+  document.getElementById('rScore').textContent=totalScore;
+  document.getElementById('rLabel').textContent='out of 39';
+  document.getElementById('rBand').innerHTML=`<div class="result-card ${band.cls}"><h3>${band.h}</h3><p>${band.m}</p></div><div class="body-text" style="margin-top:0.5rem"><strong style="color:var(--text)">The honest version:</strong> ${band.o}</div>`;
 
-function getBand(s) {
-  if (s <= 12) return {
-    cls: 'green',
-    headline: 'You seem to be doing relatively ok',
-    message: 'Based on what you have shared, things are not showing the kind of patterns that would cause serious concern right now. That does not mean everything is easy - new fatherhood is genuinely hard. But the indicators here are in a manageable range.',
-    honest: 'Keep paying attention to yourself. The fact that you are here and took this seriously says something. The early signs are worth knowing about.',
-    cta: 'light'
-  };
-  if (s <= 26) return {
-    cls: 'amber',
-    headline: 'Some things here are worth paying attention to',
-    message: 'What you have shared suggests you may be carrying more than you have been letting on - or even letting yourself acknowledge. This is a pattern that is common in new fathers, and it is also one that tends to get harder if left alone.',
-    honest: 'You do not have to feel worse than this before you deserve support. The point is to get ahead of it - not wait until it becomes a crisis.',
-    cta: 'medium'
-  };
-  return {
-    cls: 'red',
-    headline: 'This is telling us you need some proper support',
-    message: 'What you have shared describes a significant level of difficulty. This is not weakness and it is not permanent - but it is serious enough that getting the right support now makes a real difference to how quickly things can change.',
-    honest: 'Please do not sit on this. You reached out by doing this assessment. The next step is one conversation - with your GP, with a partner, with anyone. You do not have to name it perfectly to ask for help.',
-    cta: 'urgent'
-  };
-}
+  const sl=document.getElementById('sleep').value;
+  const su=document.getElementById('support').value;
+  const ho=document.getElementById('housing').value;
+  const si=document.getElementById('situation').value;
+  let flags=[];
+  if(sl==='chronic')flags.push('Chronic sleep deprivation has a direct and measurable impact on mood regulation, emotional resilience, and the ability to cope. What you described is not just tiredness - it is a significant contributing factor that deserves to be named and addressed.');
+  if(su==='isolated')flags.push('Navigating this without a support network is one of the most significant risk factors for new fathers. You are not supposed to carry this alone. That is not how this was designed to work - for anyone.');
+  if(ho==='In temporary or emergency housing'||ho==='Waiting on housing')flags.push('Housing instability during the postnatal period adds a layer of pressure that is rarely acknowledged in conversations about paternal mental health. It is real, it is significant, and it belongs in this picture.');
+  if(si==='Single parent'||si==='Separated or divorcing')flags.push('Going through new fatherhood while navigating separation or doing it alone carries a weight that most support systems are not built to recognise. What you are managing is genuinely hard.');
+  if(si==='Serving in the armed forces')flags.push('Service personnel face specific and well-documented barriers to seeking mental health support. Everything you have shared here is completely private. What you are experiencing deserves the same care as anyone else.');
 
-function buildResult() {
-  totalScore = scores.reduce((a, b) => a + (b || 0), 0);
-  const band = getBand(totalScore);
+  document.getElementById('rFlags').innerHTML=flags.length>0?`<div class="divider"></div><div class="label-tag">A few things we want you to know</div>${flags.map(f=>`<div class="flag-card"><p>${f}</p></div>`).join('')}`:'';
 
-  document.getElementById('r-score').textContent = totalScore;
-  document.getElementById('r-score-label').textContent = 'out of 39 - ' + band.headline;
-
-  document.getElementById('r-band').innerHTML = `
-    <div class="result-card ${band.cls}">
-      <h3>${band.headline}</h3>
-      <p>${band.message}</p>
-    </div>
-    <div class="body-text" style="margin-top:0.5rem"><strong style="color:#111111">The honest version:</strong> ${band.honest}</div>
-  `;
-
-  // Context flags
-  const sleep = document.getElementById('sleep').value;
-  const support = document.getElementById('support').value;
-  const housing = document.getElementById('housing').value;
-  const situation = document.getElementById('situation').value;
-
-  let flags = [];
-  if (sleep === 'chronic') flags.push('Chronic sleep deprivation significantly worsens mood regulation and emotional resilience. This is a real factor, not an excuse.');
-  if (support === 'isolated') flags.push('Going through this without a support network is one of the biggest risk factors for new fathers. You are not supposed to do this alone.');
-  if (housing === 'In temporary or emergency housing' || housing === 'Waiting on housing') flags.push('Housing instability during the postnatal period adds significant pressure that is rarely acknowledged in paternal mental health conversations.');
-  if (situation === 'Single parent' || situation === 'Separated or divorcing') flags.push('Navigating new fatherhood while managing separation or going it alone carries a particular kind of weight. That context matters.');
-  if (situation === 'Serving in the armed forces') flags.push('Service personnel face specific barriers to seeking mental health support. What you have shared here is completely confidential.');
-
-  if (flags.length > 0) {
-    document.getElementById('r-context-flags').innerHTML = `
-      <div class="divider"></div>
-      <div class="label-tag">A few things that stood out</div>
-      ${flags.map(f => `<div class="result-card amber" style="margin-bottom:0.7rem"><p>${f}</p></div>`).join('')}
-    `;
-  }
-
-  // Next steps based on band
-  let steps = '';
-  if (band.cta === 'light') {
-    steps = `
-      <div class="divider"></div>
-      <div class="label-tag">What you might do next</div>
-      <div class="next-card"><h4>Keep an eye on yourself</h4><p>Things are ok right now - but the patterns that lead to paternal depression often creep up slowly. Knowing the signs means you can catch them early.</p></div>
-      <div class="next-card"><h4>The free resource that did not exist when it should have</h4><p>Parents2Be International was built for this. Free guides, a toolkit, and content written for fathers and their partners - not a system, not a waiting list.</p></div>
-    `;
-  } else if (band.cta === 'medium') {
-    steps = `
-      <div class="divider"></div>
-      <div class="label-tag">What we would suggest</div>
-      <div class="next-card"><h4>Tell one person</h4><p>Not a full conversation if you are not ready. Just one sentence to one person. Your partner, a mate, your GP. "I have not been feeling great." That is enough to start.</p></div>
-      <div class="next-card"><h4>The 90-Day Recovery Toolkit</h4><p>Built specifically for fathers at this point - not the crisis point, but the point where things can still be turned around with the right tools. Used by fathers from week 1 to month 12.</p></div>
-      <div class="next-card"><h4>Your GP - sooner rather than later</h4><p>You do not need to call it depression to go. "I have not been coping well since the baby arrived" is enough. They have heard it before. They want to hear it.</p></div>
-    `;
-  } else {
-    steps = `
-      <div class="divider"></div>
-      <div class="label-tag">Please do not wait on this</div>
-      <div class="next-card"><h4>Your GP - this week</h4><p>Call today if you can. Tell them you are a new father and you are not coping. Those words are enough. You do not have to have all the answers before you go.</p></div>
-      <div class="next-card"><h4>Samaritans - 116 123</h4><p>Free. 24 hours. No pressure. You do not have to be in crisis to call. They are there for exactly the kind of weight you are carrying right now.</p></div>
-      <div class="next-card"><h4>The 90-Day Recovery Toolkit</h4><p>Alongside professional support, this gives you something practical to work with every day. Built for fathers, written without shame, grounded in what actually helps.</p></div>
-    `;
-  }
-  document.getElementById('r-next-steps').innerHTML = steps;
+  let steps='';
+  if(band.cta==='light'){steps=`<div class="divider"></div><div class="label-tag">What you might do next</div><div class="next-card"><h4>Keep paying attention to yourself</h4><p>The patterns that lead to paternal depression often build slowly and quietly. Knowing what to look for means you can catch them early - before they take hold.</p></div><div class="next-card"><h4>Free resources built specifically for new fathers</h4><p>Parents2Be International was built because these resources did not exist. Guides, support content, and tools for fathers and their partners - no waiting list, no system, no cost.</p></div>`;}
+  else if(band.cta==='medium'){steps=`<div class="divider"></div><div class="label-tag">What we would suggest</div><div class="next-card"><h4>Tell one person</h4><p>It does not have to be a full conversation. One sentence to one person - your partner, a friend, your GP. "I have not been feeling like myself lately." That is enough to start something.</p></div><div class="next-card"><h4>The 90-Day Recovery Toolkit</h4><p>Built specifically for fathers at this point - practical, honest, and grounded in what actually helps.</p></div><div class="next-card"><h4>Your GP - sooner rather than later</h4><p>You do not need to call it depression to go. "I have not been coping well since the baby arrived" is enough. They have heard it before and they want to hear it from you.</p></div>`;}
+  else{steps=`<div class="divider"></div><div class="label-tag">Please do not sit on this</div><div class="next-card"><h4>Your GP - this week, today if you can</h4><p>Call and tell them you are a new father and you are not coping. Those words are enough.</p></div><div class="next-card"><h4>Samaritans - 116 123</h4><p>Free. 24 hours a day. Completely confidential. You do not have to be at the edge to call.</p></div><div class="next-card"><h4>The 90-Day Recovery Toolkit</h4><p>Alongside professional support, this gives you something practical and structured to work with every day. Built for fathers, written without shame.</p></div>`;}
+  document.getElementById('rSteps').innerHTML=steps;
 
   go(5);
-
-  // GA event
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'assessment_complete', { score: totalScore, band: band.cls });
-  }
+  clearSaved();
+  if(typeof gtag!=='undefined')gtag('event','assessment_complete',{score:totalScore,band:band.cls});
 }
 
-function submitEmail() {
-  const email = document.getElementById('emailInput').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('emailInput').style.borderColor = '#C62828';
-    return;
-  }
+function submitEmail(){
+  const email=document.getElementById('emailIn').value.trim();
+  if(!email||!email.includes('@')){document.getElementById('emailIn').style.borderColor='#C62828';return;}
+  fetch('https://connect.mailerlite.com/api/subscribers',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer YOUR_MAILERLITE_API_KEY'},body:JSON.stringify({email:email,groups:['183382900380534401'],fields:{assessment_score:totalScore,assessment_band:getBand(totalScore).cls,baby_age:document.getElementById('babyAge').value||'',situation:document.getElementById('situation').value||''}})})
+  .then(()=>showRes(true)).catch(()=>showRes(true));
+}
+function skipEmail(){showRes(false);}
 
-  // MailerLite API - Assessment Father group
-  const MAILERLITE_GROUP_ID = '183382900380534401';
-  const score = totalScore;
-  const band = getBand(score);
-
-  fetch('https://connect.mailerlite.com/api/subscribers', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer YOUR_MAILERLITE_API_KEY'
-    },
-    body: JSON.stringify({
-      email: email,
-      groups: [MAILERLITE_GROUP_ID],
-      fields: {
-        assessment_score: score,
-        assessment_band: band.cls,
-        baby_age: document.getElementById('babyAge').value || '',
-        situation: document.getElementById('situation').value || ''
-      }
-    })
-  })
-  .then(() => {
-    showResources(true);
-  })
-  .catch(() => {
-    showResources(true);
-  });
+function showRes(withEmail){
+  document.getElementById('emailBlock').style.display='none';
+  const band=getBand(totalScore);
+  const tkMsg=band.cta==='urgent'?'Given what you have shared, this sits alongside your GP conversation as the most useful thing available to you right now.':'Built for exactly where you are. No jargon, no waiting list, no shame.';
+  document.getElementById('rRes').style.display='block';
+  document.getElementById('rRes').innerHTML=`<div class="divider"></div><div class="label-tag">Resources</div>${withEmail?'<p class="body-text" style="color:var(--rg-bd);font-weight:500">Your results and the 7 Signs guide are on their way. Check your inbox.</p>':''}<div class="next-card"><h4>Parents2Be International - Free resources</h4><p>The 7 Signs guide, partner support content, and more - free at <a href="https://parents2beintl.com" style="color:var(--gold-dark);text-decoration:none">parents2beintl.com</a></p></div><div class="next-card" style="border-color:var(--gold)"><h4>The 90-Day Recovery Toolkit</h4><p>${tkMsg} <a href="https://parents2beintl.com/toolkit" style="color:var(--gold-dark);font-weight:500;text-decoration:none">Find out more</a></p></div><div class="next-card"><h4>Samaritans - 116 123</h4><p>Free. 24 hours. Confidential. No pressure to say the right thing.</p></div><div style="margin-top:1.2rem;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-gold" onclick="window.location.href='https://parents2beintl.com/toolkit'">See the 90-Day Toolkit</button><button class="btn" onclick="window.location.href='https://parents2beintl.com'">Free resources</button></div>`;
+  if(typeof gtag!=='undefined')gtag('event',withEmail?'email_captured':'email_skipped',{score:totalScore});
 }
 
-function skipEmail() {
-  showResources(false);
-}
-
-function showResources(withEmail) {
-  document.getElementById('email-block').style.display = 'none';
-  const band = getBand(totalScore);
-
-  let toolkitMsg = band.cta === 'urgent'
-    ? 'Given what you have shared, this is the most useful thing we can point you to right now alongside speaking to your GP.'
-    : 'Built for exactly where you are. No jargon, no waiting lists, no shame.';
-
-  document.getElementById('r-resources').style.display = 'block';
-  document.getElementById('r-resources').innerHTML = `
-    <div class="divider"></div>
-    <div class="label-tag">Resources</div>
-    ${withEmail ? '<p class="body-text" style="color:#2E7D32;font-weight:500">Results sent. Check your inbox.</p>' : ''}
-    <div class="next-card">
-      <h4>Parents2Be International - Free resources</h4>
-      <p>The 7 Signs guide, partner support content, and more - free at <a href="https://parents2beintl.com" style="color:#8B6914;text-decoration:none">parents2beintl.com</a></p>
-    </div>
-    <div class="next-card" style="border-color:#C9A84C">
-      <h4>The 90-Day Recovery Toolkit - £97</h4>
-      <p>${toolkitMsg} <a href="https://parents2beintl.com/toolkit" style="color:#8B6914;font-weight:500;text-decoration:none">Find out more</a></p>
-    </div>
-    <div class="next-card">
-      <h4>Samaritans - 116 123</h4>
-      <p>Free. 24 hours. Confidential. No pressure to say the right thing.</p>
-    </div>
-    <div style="margin-top:1.2rem">
-      <button class="btn btn-gold" onclick="window.location.href='https://parents2beintl.com/toolkit'">See the 90-Day Toolkit</button>
-    </div>
-  `;
-
-  if (typeof gtag !== 'undefined') {
-    gtag('event', withEmail ? 'email_captured' : 'email_skipped', { score: totalScore });
-  }
-}
+loadSaved();
 </script>
 </body>
 </html>
